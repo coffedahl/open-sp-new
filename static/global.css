@@ -55,6 +55,10 @@
 .btn-green:hover{
 	background-color: #2a5e2a;
 }
+.btn-disabled{
+	color: grey;
+	background-color: #353535;
+}
 @media print {
 	header{
         display: none;
