@@ -1,2 +1,43 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="main center column">
+	<h1>Start</h1>
+	<a href="/price-adjustment">
+		<button class="center button btn-blue">
+			<i class="fas fa-tag" />
+			<p>Price Adjustment</p>
+		</button>
+	</a>
+	<a href="/shipment-correction">
+		<button class="center button btn-blue">
+			<i class="fas fa-truck" />
+			<p>Shipment Correction</p>
+		</button>
+	</a>
+	<a href="/shelve">
+		<button class="center button btn-blue">
+			<i class="fas fa-warehouse" />
+			<p>Shelve update</p>
+		</button>
+	</a>
+	<a href="/wiki">
+		<button class="center button btn-blue">
+			<i class="fas fa-book" />
+			<p>Wiki</p>
+		</button>
+	</a>
+</div>
+
+<style>
+	a {
+		text-decoration: none;
+	}
+	p {
+		margin-left: 5px;
+	}
+	button {
+		width: 30vw;
+		height: 7vh;
+		margin-top: 3vh;
+		font-size: large;
+		font-weight: 500;
+	}
+</style>
