@@ -6,12 +6,6 @@
 			<p>Price Adjustment</p>
 		</button>
 	</a>
-	<a href="/shipment-correction">
-		<button class="center button btn-blue">
-			<i class="fas fa-truck" />
-			<p>Shipment Correction</p>
-		</button>
-	</a>
 	<a href="/shelve">
 		<button class="center button btn-blue">
 			<i class="fas fa-warehouse" />
