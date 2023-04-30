@@ -4,7 +4,7 @@ import { redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ cookies }) => {
     if (cookies.get('product')) {
-        throw redirect(303, '/sign')
+        throw redirect(303, '/sign/edit')
     }
 };
 
@@ -15,7 +15,7 @@ export const actions: Actions = {
         if (artnr.length == 5) {
             const product = await scrapeProduct(artnr)
             cookies.set('product', JSON.stringify(product))
-            throw redirect(303, '/sign')
+            throw redirect(303, '/sign/edit')
         }
     }
 };
