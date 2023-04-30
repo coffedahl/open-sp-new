@@ -6,8 +6,8 @@
 			<p>Price Adjustment</p>
 		</button>
 	</a>
-	<a href="">
-		<button class="center button btn-disabled">
+	<a href="/sign">
+		<button class="center button btn-blue">
 			<i class="fa-solid fa-sign-hanging" />
 			<p>Sign maker</p>
 		</button>
