@@ -5,3 +5,7 @@ export interface Product {
     current?: string,
     previous?: string
 }
+export interface RunRequest {
+    store: string,
+    type: 'price' | 'sign'
+}
