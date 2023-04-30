@@ -1,33 +1,33 @@
 <script lang="ts">
+	import Normal from '../print/normal.svelte';
 	import type { PageServerData } from './$types';
 	export let data: PageServerData;
+	$: product = data.product;
 </script>
 
-<div class="main">
+<div class="main flex">
 	<div class="container">
 		<form method="post">
-			<input type="text" name="title" value={data.title} />
-			{#each data.bullet as bullet, i}
+			<input type="text" name="title" value={product.title} />
+			{#each product.bullet as bullet, i}
 				<input type="text" name={'bullet' + String(i + 1)} value={bullet} />
 			{/each}
-			<input type="text" name="current" value={data.current} />
-			<input type="text" name="previous" value={data.previous} />
-			<input type="text" name="artnr" value={data.artnr} />
+			<input type="text" name="current" value={product.current} />
+			<input type="text" name="previous" value={product.previous} />
+			<input type="text" name="artnr" value={product.artnr} />
 			<button formaction="?/update">Update</button>
 			<button formaction="?/delete">Delete</button>
 			<button formaction="?/generate">Generate</button>
 		</form>
 	</div>
 	<div class="container">
-		<iframe src="/sign/print" frameborder="1" title="pdf-preview" />
+		<div class="frame">
+			<Normal {product} />
+		</div>
 	</div>
 </div>
 
 <style>
-	.main {
-		display: flex;
-		width: 100vw;
-	}
 	form {
 		display: flex;
 		flex-direction: column;
@@ -45,8 +45,7 @@
 		justify-content: center;
 		width: 50%;
 	}
-	iframe {
-		height: 85vh;
-		width: 75%;
+	.frame{
+		border: 1px solid black;
 	}
 </style>
