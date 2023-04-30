@@ -8,6 +8,12 @@
 	</a>
 	<a href="">
 		<button class="center button btn-disabled">
+			<i class="fa-solid fa-sign-hanging" />
+			<p>Sign maker</p>
+		</button>
+	</a>
+	<a href="">
+		<button class="center button btn-disabled">
 			<i class="fas fa-warehouse" />
 			<p>Shelve update</p>
 		</button>
