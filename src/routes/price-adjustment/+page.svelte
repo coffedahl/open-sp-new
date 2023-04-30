@@ -53,7 +53,7 @@
 		string_list.push(new_string.slice(0, -1)); // Append the last amount to a string
 		string_list = string_list; //Update interface
 		// Add run to db and write to browser log
-		fetch(getURL() + '/api/runs', {
+		fetch('/api/runs', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
