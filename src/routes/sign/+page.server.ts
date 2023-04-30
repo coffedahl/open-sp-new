@@ -2,9 +2,14 @@ import type { Actions, PageServerLoad } from "./$types";
 import { scrapeProduct } from "$lib/scraper";
 import { redirect } from "@sveltejs/kit";
 
-export const load: PageServerLoad = async ({ cookies }) => {
-    if (cookies.get('product')) {
-        throw redirect(303, '/sign/edit')
+export const load: PageServerLoad = async ({ url, cookies }) => {
+    const del = url.searchParams.get('delete')
+    if (del != 'true') {
+        if (cookies.get('product')) {
+            throw redirect(303, '/sign/edit')
+        }
+    } else {
+        cookies.delete('product')
     }
 };
 
