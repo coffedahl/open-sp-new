@@ -28,7 +28,7 @@ export const actions: Actions = {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ store: sessionData.storenumber, type: 'sign' })
+                body: JSON.stringify({ store: sessionData.id, type: 'sign' })
             })
             throw redirect(303, '/sign/edit')
         }
