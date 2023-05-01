@@ -17,6 +17,7 @@
 					</button>
 					<div class="dropdown-content column">
 						<a href="/price-adjustment">Price Adjustment</a>
+						<a href="/sign">Sign maker</a>
 					</div>
 				</div>
 				<a href="/wiki">Wiki</a>
