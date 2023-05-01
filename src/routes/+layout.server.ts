@@ -1,5 +1,10 @@
 import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ cookies }) => {
-    return { storenumber: String(cookies.get('storenumber')) };
+    try {
+        const sessionData = JSON.parse(String(cookies.get('session')))
+        return { storenumber: sessionData.storenumber };
+    }catch{
+        return {storenumber: 'undefined'}
+    }
 }) satisfies LayoutServerLoad;
