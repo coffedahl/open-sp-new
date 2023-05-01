@@ -10,7 +10,7 @@ export async function scrapeProduct(artnr: string) {
     const object: Product = { bullet: [] };
     // Setup browser
     object['artnr'] = artnr
-    const browser = await puppeteer.launch({ headless: true })
+    const browser = await puppeteer.launch({ headless: true, args:['--no-sandbox'] })
     const page = await browser.newPage()
     // Goto kjell
     await page.goto('https://www.kjell.com/' + artnr)
