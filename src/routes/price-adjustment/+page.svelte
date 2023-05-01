@@ -2,7 +2,7 @@
 	// Import components
 	import type { PageServerData } from './$types';
 	import StringItem from './components/string_item.svelte';
-	import { callFocus, getURL } from '../../global';
+	import { callFocus } from '../../global';
 
 	export let data: PageServerData;
 	//Subscribe to stores
