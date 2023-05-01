@@ -10,7 +10,7 @@ export async function scrapeProduct(artnr: string) {
     const object: Product = { bullet: [] };
     // Setup browser
     object['artnr'] = artnr
-    const browser = await puppeteer.launch({ headless: true, args:['--no-sandbox'] })
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] })
     const page = await browser.newPage()
     // Goto kjell
     await page.goto('https://www.kjell.com/' + artnr)
@@ -26,8 +26,12 @@ export async function scrapeProduct(artnr: string) {
     // Get prices
     const currentPrice = await page.$eval(currentPriceSelector, el => el.innerText)
     object['current'] = currentPrice
-    const previousPrice = await page.$eval(previousPriceSelector, el => el.innerText)
-    object['previous'] = previousPrice
+    try {
+        const previousPrice = await page.$eval(previousPriceSelector, el => el.innerText)
+        object['previous'] = previousPrice
+    } catch {
+        object['previous'] = ""
+    }
     await browser.close()
     return object
 }

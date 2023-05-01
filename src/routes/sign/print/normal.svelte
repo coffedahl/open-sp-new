@@ -16,7 +16,7 @@
 	<div class="prices">
 		<h1 id="price">{product.current.replace(' ', '')}</h1>
 		<h2 id="regular">{product.previous.replace(' ', '')}</h2>
-		<p>Art. {product.artnr}</p>
+		<p class={product.previous ? "" : "space-above"}>Art. {product.artnr}</p>
 	</div>
 </div>
 
@@ -48,6 +48,9 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		width: 435px;
+	}
+	.space-above {
+		margin-top: 66px;
 	}
 	.titlecontainer {
 		margin-top: 35px;
