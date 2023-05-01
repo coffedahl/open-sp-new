@@ -12,13 +12,13 @@
 			<p>Sign maker</p>
 		</button>
 	</a>
-	<a href="">
+	<a href="/">
 		<button class="center button btn-disabled">
 			<i class="fas fa-warehouse" />
 			<p>Shelve update</p>
 		</button>
 	</a>
-	<a href="">
+	<a href="/">
 		<button class="center button btn-disabled">
 			<i class="fas fa-book" />
 			<p>Wiki</p>
