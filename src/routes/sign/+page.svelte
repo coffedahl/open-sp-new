@@ -1,4 +1,4 @@
-<div class="main center">
+<div class="main total-center">
 	<form method="post">
 		<input type="text" name="artnr" placeholder="Artikelnummer" />
 		<button class="button btn-blue">Make sign</button>

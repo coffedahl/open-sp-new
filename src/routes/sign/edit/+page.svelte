@@ -6,7 +6,7 @@
 </script>
 
 <div class="main flex">
-	<div class="container">
+	<div class="container flex column total-center">
 		<form method="post">
 			<input type="text" name="title" value={product.title} />
 			{#each product.bullet as bullet, i}
@@ -39,10 +39,6 @@
 		font-size: large;
 	}
 	.container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 		width: 50%;
 	}
 	.frame{

@@ -4,7 +4,7 @@
 </script>
 
 <header>
-	<div class="title center">
+	<div class="title total-center">
 		<div class="nav-container">
 			<div class="spacer" />
 			<a href="/"><h1>Open-SP</h1></a>
@@ -37,7 +37,7 @@
 </header>
 
 <slot />
-<footer class="center">
+<footer class="total-center">
 	<p>Created by Coffe Dahl(3611), 2023</p>
 </footer>
 
