@@ -71,6 +71,15 @@
 	color: grey;
 	background-color: #353535;
 }
+.article-title {
+	font-size: 1.8em;
+}
+.article-sub {
+	font-size: 1.5em;
+}
+.article-text {
+	font-size: 1em;
+}
 @media print {
 	header {
 		display: none;
