@@ -1,4 +1,4 @@
-<div class="main center">
+<div class="main total-center">
 	<form method="post" class="flex column">
 		<input type="text" name="storenumber" placeholder="Store number" />
 		<input type="password" name="password" placeholder="Password" />
