@@ -18,10 +18,9 @@ export const actions: Actions = {
     default: async function ({ request, cookies, fetch }) {
         const formdata = await request.formData()
         const sessionData: Session = JSON.parse(String(cookies.get('session')))
-        console.log(sessionData.storenumber)
         const artnr = String(formdata.get('artnr'))
         if (artnr.length == 5) {
-            const product = await scrapeProduct(artnr)
+            const product = await scrapeProduct(artnr, sessionData.country)
             cookies.set('product', JSON.stringify(product))
             fetch('/api/runs', {
                 method: 'POST',
