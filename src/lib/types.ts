@@ -12,13 +12,13 @@ export interface RunRequest {
 
 export interface Session {
     id: string
-    storenumber: string
+    store: string
     expires: string,
     country: 'se' | 'no'
 }
 
 export function validate_session(data: any): Session {
-    if (typeof data.id === 'string' && typeof data.storenumber === 'string' && typeof data.expires === 'string') {
+    if (typeof data.id === 'string' && typeof data.store === 'string' && typeof data.expires === 'string') {
         return data
     } else {
         throw console.error('Invalid type')
