@@ -13,7 +13,8 @@ export interface RunRequest {
 export interface Session {
     id: string
     storenumber: string
-    expires: string
+    expires: string,
+    country: 'se' | 'no'
 }
 
 export function validate_session(data: any): Session {

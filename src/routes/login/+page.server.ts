@@ -18,7 +18,7 @@ export const actions: Actions = {
 		if (response[0].result[0]) {
 			const store: Store = response[0].result[0]
 			if (store.password == password) {
-				const sessionRes = await db.query('CREATE session SET storenumber = $storenumber, expires = time::now() + 1h;', { storenumber: store.storenumber })
+				const sessionRes = await db.query('CREATE session SET storenumber = $storenumber, country=$country, expires = time::now() + 1h;', { storenumber: store.storenumber, country: store.country })
 				const sessionData = sessionRes[0].result[0]
 				cookies.set('session', JSON.stringify(sessionData))
 				throw redirect(303, '/')

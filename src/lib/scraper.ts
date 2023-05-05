@@ -6,14 +6,14 @@ const bulletSelector = '#content-container > div > div > ul > li'
 const currentPriceSelector = '#content-container > div > div > div > div > div > span > span'
 const previousPriceSelector = '#content-container > div > div > div > div > div > span > div > span'
 
-export async function scrapeProduct(artnr: string) {
+export async function scrapeProduct(artnr: string, country: 'se' | 'no') {
     const object: Product = { bullet: [] };
     // Setup browser
     object['artnr'] = artnr
     const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] })
     const page = await browser.newPage()
     // Goto kjell
-    await page.goto('https://www.kjell.com/' + artnr)
+    await page.goto('https://www.kjell.com/' + country + '/' + artnr)
     // Get title
     const title = await page.$eval(titleSelector, el => el.innerText)
     object['title'] = title
