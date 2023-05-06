@@ -1,6 +1,6 @@
 <article>
-    <h1>Welcome to Open-SP</h1>
-    <p>This is a project to help the sellers at Kjell & Co in their daily tasks</p>
+    <h1 class="article-title">Welcome to Open-SP</h1>
+    <p class="article-text">This is a project to help the sellers at Kjell & Co in their daily tasks</p>
 </article>
 <style>
     article {
