@@ -12,6 +12,9 @@
 		{#each product.bullet as bullet}
 			<li>• {bullet}</li>
 		{/each}
+		{#if product.bullet.length != 3}
+			<div style="height: {(3 - product.bullet.length) * 36.6}px"></div>
+		{/if}
 	</ul>
 	<div class="prices">
 		<h1 id="price">{product.current.replace(' ', '')}</h1>
