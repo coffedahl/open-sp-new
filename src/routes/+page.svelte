@@ -18,8 +18,8 @@
 			<p>Shelve update</p>
 		</button>
 	</a>
-	<a href="/">
-		<button class="total-center button btn-disabled">
+	<a href="/wiki">
+		<button class="total-center button btn-blue">
 			<i class="fas fa-book" />
 			<p>Wiki</p>
 		</button>
