@@ -15,5 +15,12 @@
 
 <div class="flex row">
 	<Normal product={data.product} />
+	<div class="spacer" />
 	<Normal product={data.product} />
 </div>
+
+<style>
+	.spacer {
+		width: 45px;
+	}
+</style>
