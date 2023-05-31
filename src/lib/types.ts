@@ -1,3 +1,6 @@
+/***
+ * This is being deleted when product class is implemented
+ */
 export interface Product {
     artnr?: string,
     title?: string,
@@ -10,13 +13,18 @@ export interface RunRequest {
     type: 'price' | 'sign'
 }
 
+/***
+ * This is being deleted when session class is implemented
+ */
 export interface Session {
     id: string
     store: string
-    expires: string,
+    expires: string
     country: 'se' | 'no'
 }
-
+/***
+ * This is being deleted when session class is implemented
+ */
 export function validate_session(data: any): Session {
     if (typeof data.id === 'string' && typeof data.store === 'string' && typeof data.expires === 'string') {
         return data
