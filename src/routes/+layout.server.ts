@@ -1,9 +1,8 @@
 import type { LayoutServerLoad } from './$types';
 
-export const load = (async ({ cookies }) => {
+export const load = (async ({ locals }) => {
 	try {
-		const sessionData = JSON.parse(String(cookies.get('session')));
-		return { storenumber: sessionData.store.split(':')[1].toUpperCase() };
+		return { storenumber: locals.storenumber.toUpperCase() };
 	} catch {
 		return { storenumber: 'undefined' };
 	}

@@ -1,27 +1,33 @@
 import { redirect, type Handle } from '@sveltejs/kit';
-import db from '$lib/database';
-import { validate_session, type Session } from '$lib/types';
+import { Database } from '$lib/database';
+
+const db = new Database('http://localhost:8000/rpc')
+db.initDb('root', 'root', 'test', 'test')
+console.log('db init')
 
 export const handle: Handle = async ({ event, resolve }) => {
+	event.locals.db = db
 	//OM INTE HAR SESSION
 	if (!event.cookies.get('session') && !event.url.pathname.endsWith('/login')) {
+		event.locals.storenumber = undefined
 		throw redirect(303, '/login')
-	} else if (event.cookies.get('session')){
+	} else if (event.cookies.get('session')) {
 		//ANNARS HÄMTA SESSION
 		const sessionData = JSON.parse(String(event.cookies.get('session')))
 		try {
 			// HÄMTA DB SESSION
-			const response = await db.select(sessionData.id)
-			const dbSession: Session = validate_session(response)
-			const expires = new Date(dbSession.expires)
+			const dbSession = await db.getSessionById(sessionData.sessionId)
+			event.locals.storenumber = dbSession.store
 			// OM EXPIRED
-			if (expires < new Date()) {
-				await db.delete(sessionData.id)
+			if (dbSession.expires < new Date()) {
+				await db.deleteSessionById(dbSession.id)
 				event.cookies.delete('session')
+				event.locals.storenumber = undefined
 				throw redirect(303, '/login')
 			}
 		} catch {
 			//OM INTE FINNS I DB
+			event.locals.storenumber = undefined
 			event.cookies.delete('session')
 			throw redirect(303, '/login')
 		}

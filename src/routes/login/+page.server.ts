@@ -1,7 +1,6 @@
 import { redirect } from '@sveltejs/kit';
-import db from '$lib/database';
 import type { Actions, PageServerLoad } from './$types';
-import type { Store } from '../api/stores/+server';
+import type { Store } from '$lib/classes/store';
 
 export const load: PageServerLoad = async ({ cookies }) => {
 	if (cookies.get('session')) {
@@ -10,22 +9,19 @@ export const load: PageServerLoad = async ({ cookies }) => {
 };
 
 export const actions: Actions = {
-	login: async ({ request, cookies }) => {
+	login: async ({ request, locals, cookies }) => {
 		const formdata = await request.formData()
 		const storenumber = formdata.get('storenumber')
 		const password = formdata.get('password')
-		const response = await db.query('SELECT * FROM store WHERE storenumber = $store;', { store: storenumber })
-		if (response[0].result[0]) {
-			const store: Store = response[0].result[0]
-			if (store.password == password) {
-				const sessionRes = await db.query('CREATE session SET store = $store, country=$country, expires = time::now() + 1h;', { store: store.id, country: store.country })
-				const sessionData = sessionRes[0].result[0]
-				cookies.set('session', JSON.stringify(sessionData))
-				throw redirect(303, '/')
-			}
-		} else {
+		const store = await locals.db.getStoreByStorenumber(String(storenumber))
+		if (store.password == password) {
+			const sessionData = await locals.db.createSession(store)
+			console.log(sessionData.id)
+			cookies.set('session', JSON.stringify({ sessionId: sessionData.id }))
+			throw redirect(303, '/')
+		}
+		else {
 			return false
 		}
-
 	}
 };
