@@ -11,17 +11,17 @@ export class Store {
 
     static createFromObject(object: any) {
         if (
-            typeof object.storeNumber === 'string' &&
+            typeof object.storenumber === 'string' &&
             typeof object.password === 'string' &&
             (object.country === 'se' || object.country === 'no')
         ) {
             return new Store(
-                object.storeNumber,
+                object.storenumber,
                 object.password,
                 object.country
             );
         } else {
-            throw new Error('Invalid input types');
+            throw new Error('Invalid input types' + JSON.stringify(object));
         }
     }
 
