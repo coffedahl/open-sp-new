@@ -28,12 +28,13 @@ export const actions: Actions = {
 	/**
 	 * Function for handling the scraping of an product
 	 */
-	default: async function ({ request, cookies, fetch }) {
+	default: async function ({ request, cookies, fetch, locals }) {
 		// Get user input from form
 		const formdata = await request.formData();
 		const artnr = String(formdata.get('artnr'));
 		// Get session data
-		const sessionData: Session = JSON.parse(String(cookies.get('session')));
+		const sessionID: any = JSON.parse(String(cookies.get('session')));
+		const sessionData = await locals.db.getSessionById(sessionID.sessionId)
 		// If input data is a 5 long number
 		if (artnr.length == 5) {
 			// Scrape the data and parse return into product class
