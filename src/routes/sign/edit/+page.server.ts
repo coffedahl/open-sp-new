@@ -5,7 +5,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
 	const cookie = String(cookies.get('product'));
 	if (cookie) {
 		const product = Product.createFromObject(JSON.parse(cookie));
-		return { product: product };
+		return { product: product.toObject() };
 	} else {
 		throw redirect(303, '/sign');
 	}
