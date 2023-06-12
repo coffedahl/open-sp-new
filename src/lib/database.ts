@@ -44,7 +44,7 @@ export class Database {
 
 	/** NEEDS HASH */
 	async createSession(store: Store): Promise<Session> {
-		const response = await this._db.query('CREATE session SET store = $store, expires = time::now() + 1h;', { store: store.storeNumber })
+		const response = await this._db.query('CREATE session SET store = $store, expires = time::now() + 1h, country = $country;', { store: store.storeNumber, country: store.country })
 		if (response[0].result[0]) {
 			const sessionData = response[0].result[0]
 			return Session.createFromObject(sessionData)
