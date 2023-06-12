@@ -71,4 +71,8 @@ export class Database {
 			throw new Error('No user with username: ' + storenumber + ' was found')
 		}
 	}
+
+	get db() {
+		return this._db
+	}
 }

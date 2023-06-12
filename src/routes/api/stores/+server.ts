@@ -1,4 +1,3 @@
-import db from "$lib/database";
 import type { RequestHandler } from "./$types";
 
 export interface Store {
@@ -16,14 +15,14 @@ function validateStore(data: any): Store {
     }
 }
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url, locals }) => {
     if (url.searchParams.has('storenumber')) {
         console.log("param met")
-        const response = await db.query('SELECT * FROM store WHERE storenumber = $storenumber;', { storenumber: url.searchParams.get('storenumber') })
+        const response = await locals.db.db.query('SELECT * FROM store WHERE storenumber = $storenumber;', { storenumber: url.searchParams.get('storenumber') })
         return new Response(JSON.stringify(response[0].result));
     } else {
         console.log("get all")
-        const response = await db.select('store')
+        const response = await locals.db.db.select('store')
         return new Response(JSON.stringify(response))
     }
 

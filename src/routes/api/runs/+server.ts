@@ -1,11 +1,10 @@
-import db from "$lib/database";
 import type { RunRequest } from "$lib/types";
 import type { RequestHandler } from "./$types";
 
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, locals }) => {
     const data: RunRequest = await request.json()
-    const res = db.create('run', { store: data.store, type: data.type, date: new Date() })
+    const res = locals.db.db.create('run', { store: data.store, type: data.type, date: new Date() })
     return new Response(JSON.stringify({ res }));
 };
 
