@@ -1,7 +1,7 @@
 import { redirect, type Handle } from '@sveltejs/kit';
 import { Database } from '$lib/database';
 
-const db = new Database('http://localhost:8000/rpc')
+const db = Database.createFromEnvUrl()
 db.initDb('root', 'root', 'test', 'test')
 console.log('db init')
 
