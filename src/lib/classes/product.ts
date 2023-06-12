@@ -43,6 +43,17 @@ export class Product {
 		return JSON.stringify(object);
 	}
 
+	toObject() {
+		const object = {
+			artnr: this._artnr,
+			title: this._title,
+			current: this._current,
+			previous: this._previous,
+			bullet: this._bullet
+		};
+		return object
+	}
+
 	fixPrices(country: 'se' | 'no') {
 		if (!this._current?.includes(',') || !this._current?.includes(':')) {
 			let character: string;
