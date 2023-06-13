@@ -55,7 +55,7 @@ export class Product {
 	}
 
 	fixPrices(country: 'se' | 'no') {
-		if (!this._current?.includes(',') || !this._current?.includes(':')) {
+		if (!this._current?.includes(',') && !this._current?.includes(':')) {
 			let character: string;
 			if (country == 'se') {
 				character = ':';
