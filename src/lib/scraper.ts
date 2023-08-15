@@ -1,4 +1,6 @@
+// Imports
 import puppeteer from 'puppeteer';
+// Type for the collected data
 interface ScrapeData {
 	artnr?: string;
 	bullet: string[];
@@ -7,6 +9,7 @@ interface ScrapeData {
 	previous?: string;
 }
 
+// Selectors for data on website
 const titleSelector = '#content-container > div > div > h1';
 const bulletSelector = '#content-container > div > div > ul > li';
 const currentPriceSelector = '#content-container > div > div > div > div > div > span > span';
@@ -39,6 +42,7 @@ export async function scrapeProduct(artnr: string, country: 'se' | 'no') {
 	} catch {
 		object['previous'] = '';
 	}
+	// Close the scraper and return object
 	await browser.close();
 	return object;
 }
