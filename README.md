@@ -1,38 +1,30 @@
-# create-svelte
+# Open-SP new
+`This project is dead`
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Kjell has published its own tools for all the usecases and this tool is now dead
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+This project was intended as a tool for the employees in Kjell & Co stores, the project is a bunch of smaller tools integrated in an simple web frontend to make daily repetitive task much easier for the employees. The tool also feature a login system to prevent access for unauthorized because the tool uses webscraping for data and i do **not** want to mess up the analytics
 
+## Tools
+### Delimiter tool for price
+This tool can shorten and keep track of price strings that gets dropped every moring. The software for checking prices has a max length of the string and this tools splits a long release into multiple smaller string and adds simple checkboxes to keep track of progress.
+
+### Sign creator
+This tool creates the price signs for the store with automaticly fetched data from the website. 
+
+***This tool uses a `webscraper` on [kjells website](https://www.kjell.com) be careful not to overuse or analytics may be messed up***
+
+## Develop on the project
+**Requirements:**
+- `nodejs`
+
+If you want to develop on the project download the sourcecode from github and install dependencies with 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+you can then start the development server with 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
